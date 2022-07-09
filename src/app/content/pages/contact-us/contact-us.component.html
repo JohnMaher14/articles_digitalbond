@@ -96,7 +96,7 @@
                           <div class="form-group row">
                               <label for="email" class="col-sm-3 col-md-2 col-form-label">رقم الهاتف *</label>
                               <div class="col-sm-6 col-md-5">
-                                  <input class="form-control" onkeypress="isInputNumber(event)" formControlName="phone" id="phone" type="number" required>
+                                  <input class="form-control" onkeypress="isInputNumber(event)" min="1" formControlName="phone" id="phone" type="number" required>
                               </div>
                             </div>
                             <div *ngIf="contactUsForm.controls['phone'].touched && contactUsForm.controls['phone'].errors != null" class="alert alert-danger"  role="alert">

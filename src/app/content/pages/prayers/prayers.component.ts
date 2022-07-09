@@ -1,7 +1,9 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ArticlesService } from 'src/app/services/articles.service';
 import { PrayerTimeService } from 'src/app/services/prayer-time.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-prayers',
@@ -11,9 +13,13 @@ import { PrayerTimeService } from 'src/app/services/prayer-time.service';
 export class PrayersComponent implements OnInit {
   loading: boolean = false;
   prayerTimeContainer:any;
+  articlesViews: any[] =[];
   pipe = new DatePipe('en-US');
+  articleImage:string = `${environment.imageUrl}posts/`;
+
   constructor(
-    private _PrayerTimeService:PrayerTimeService
+    private _PrayerTimeService:PrayerTimeService,
+    private _ArticlesService:ArticlesService
   ){}
   prayerForm: FormGroup = new FormGroup({
     'countries': new FormControl('', Validators.required)
@@ -29,7 +35,26 @@ export class PrayersComponent implements OnInit {
       }
     )
   }
+  showArticlesViews(){
+    this.loading  = true;
+    this._ArticlesService.getArticles().subscribe(
+      (response) => {
+        // this.articles = response.row
+        const newArray =  response.row.sort(
+          (views:any , view_counter:any)=> {
+            return view_counter.view_counter - views.view_counter;
+          }
+        ).filter((x:any) => {
+          return x.post_status != 0;
+        })
+        console.log(newArray);
+        this.articlesViews = newArray;
+        this.loading  = false;
 
+      }
+
+    )
+  }
   submit(prayerForm:FormGroup){
     this.loading = true;
     this._PrayerTimeService.getPrayerTimeAndRegion(
@@ -45,6 +70,7 @@ export class PrayersComponent implements OnInit {
   }
   ngOnInit(): void {
     this.showPrayers();
+    this.showArticlesViews();
     // console.log(this.pipe.transform(Date.now(), 'dd-MM-yyyy'));
   }
 

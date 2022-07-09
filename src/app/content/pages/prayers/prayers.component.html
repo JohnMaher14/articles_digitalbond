@@ -333,60 +333,24 @@
               <!--  /.End of title -->
               <div class="posts">
 
-
-
-                  <!-- /.latest post -->
-                  <div class="media latest_post" >
-                      <a class="media-left">
-                          <img src="assets/img/GaremetAkl/Articles/1/Most popular.jpg" class="media-object" alt="">
-                      </a>
-                      <div class="media-body">
-                          <h6 class="media-heading"><a href="article-details.html">"منيو على قد الإيد"..
-                                  أفكار 5 وجبات بتكلفة متوسطة لسفرتك هذا الأسبوع</a></h6>
-                          <div class="entry-meta">
-                              <span class="entry-date"><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-01-21T19:00">الأربعاء 01 يونيو</time></span>
-                          </div>
-                      </div>
-                  </div>
-                  <!-- /.latest post -->
-                  <div class="media latest_post">
-                      <a class="media-left">
-                          <img src="assets/img/GaremetAkl/Articles/3/Most popular.jpg" class="media-object" alt="">
-                      </a>
-                      <div class="media-body">
-                          <h6 class="media-heading"><a href="article-details.html">لو عروسة جديدة.. 7
-                                  أكلات سهلة وسريعة</a></h6>
-                          <div class="entry-meta">
-                              <span class="entry-date"><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-01-21T19:00">الأربعاء 01 يونيو</time></span>
-                          </div>
-                      </div>
-                  </div>
-                  <!-- /.latest post -->
-                  <div class="media latest_post">
-                      <a class="media-left">
-                          <img src="assets/img/GaremetAkl/Articles/4/Most popular.jpg" class="media-object" alt="">
-                      </a>
-                      <div class="media-body">
-                          <h6 class="media-heading"><a href="article-details.html">3 حلويات شرقية ممكن
-                                  تعمليهم فى البيت بسهولة</a></h6>
-                          <div class="entry-meta">
-                              <span class="entry-date"><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-01-21T19:00">الأربعاء 01 يونيو</time></span>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="media latest_post">
-                      <a class="media-left">
-                          <img src="assets/img/GaremetAkl/Articles/5/Most popular.jpg" class="media-object" alt="">
-                      </a>
-                      <div class="media-body">
-                          <h6 class="media-heading"><a href="article-details.html">"5 عصائر تناولها دون
-                                  القلق من زيادة الوزن</a></h6>
-                          <div class="entry-meta">
-                              <span class="entry-date"><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-01-21T19:00">الأربعاء 01 يونيو</time></span>
-                          </div>
-                      </div>
-                  </div>
-                  <!-- /.latest post -->
+          <!-- /.latest post -->
+          <div *ngFor="let article of articlesViews| slice:-6:-1" class="media latest_post">
+            <a class="media-left">
+              <img [src]="articleImage+article.main_image" class="media-object" alt="">
+            </a>
+            <div class="media-body">
+              <h6 class="media-heading"><a [routerLink]="['/article-details',article.id]">
+                {{article.title}}
+              </a></h6>
+              <div class="entry-meta">
+                <span class="entry-date"><i class="fa fa-calendar" aria-hidden="true"></i><time
+                    datetime="2018-01-21T19:00">
+                    {{article.created_at}}
+                  </time></span>
+              </div>
+            </div>
+          </div>
+          <!-- /.latest post -->
               </div>
           </div>
           <div class="banner-content">

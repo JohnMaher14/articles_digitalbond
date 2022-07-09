@@ -27,7 +27,7 @@ export class ContactUsComponent implements OnInit {
         console.log(response.ar_success);
         this.success = response.ar_success;
         this.loading = false;
-
+        contactUsForm.reset();
       }
     )
   }

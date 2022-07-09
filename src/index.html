@@ -22,11 +22,12 @@
               <div></div>
           </div>
       </div>
-  </div>
+    </div>
   </app-root>
 
 
 
+      <!-- /.End of Sign up  Sing in -->
       <!-- /.End of Sign up  Sing in -->
       <script src="assets/js/jquery.min.js"></script>
       <script src="assets/js/bootstrap.min.js"></script>
@@ -41,6 +42,11 @@
           event.preventDefault();
       }
     }
+    window.addEventListener("keydown", function(e) {
+                if(["ArrowUp","ArrowDown"].indexOf(e.code) > -1) {
+                    e.preventDefault();
+                }
+            }, false);
     </script>
 </body>
 </html>

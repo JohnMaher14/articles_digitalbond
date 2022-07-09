@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit {
   prayerTimeContainer:any;
   categories: any[] =[];
   pipe = new DatePipe('en-US');
+  today: any;
   constructor(
     private _PrayerTimeService:PrayerTimeService,
     private _CategoryService:CategoryService,
@@ -44,6 +45,10 @@ export class NavbarComponent implements OnInit {
       }
     )
   }
+  getTodayDate(){
+    this.today = this.pipe.transform(Date.now(), 'dd-MM-yyyy')
+
+  }
   navOpen(){
     let sidebar = document.querySelector('.side')
     this._Renderer2.addClass(document.body,'menu-hide')
@@ -54,6 +59,7 @@ export class NavbarComponent implements OnInit {
     this.showWeather();
     this.getPrayersTime()
     this.showCategories();
+    this.getTodayDate();
     // console.log(this.pipe.transform(Date.now(), 'dd-MM-yyyy'));
   }
 
