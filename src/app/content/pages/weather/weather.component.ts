@@ -13,6 +13,7 @@ export class WeatherComponent implements OnInit {
   loading: boolean = true;
   articlesViews: any[] =[];
   weatherContainer:any;
+  weatherContainerDetails:any;
   articleImage:string = `${environment.imageUrl}posts/`;
   constructor(
     private _WeatherService:WeatherService,
@@ -41,12 +42,15 @@ export class WeatherComponent implements OnInit {
 
     )
   }
-  showPrayers(){
+  showWeather(){
     this.loading = true;
 
     this._WeatherService.getCountry().subscribe(
       (data)=> {
-        this.weatherContainer = data.main;
+        console.log(data);
+        this.weatherContainer = data.current;
+        this.weatherContainerDetails = data.location;
+
         this.loading = false;
 
       }
@@ -60,14 +64,15 @@ export class WeatherComponent implements OnInit {
        weatherForm.value.countries
       ).subscribe(
       (data)=> {
-        this.weatherContainer = data.main;
+        this.weatherContainer = data.current;
+        this.weatherContainerDetails = data.location;
         this.loading = false;
 
       }
     )
   }
   ngOnInit(): void {
-    this.showPrayers();
+    this.showWeather();
     this.showArticlesViews();
   }
 

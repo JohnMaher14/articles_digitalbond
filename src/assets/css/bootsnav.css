@@ -1349,7 +1349,9 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked {
     }
 }
 
+
 @media (max-width: 767px) {
+
     nav.navbar.bootsnav .navbar-header {
         padding-left: 15px;
         padding-right: 15px;
@@ -1437,7 +1439,23 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked {
         padding-bottom: 15px !important;
     }
 }
-
+@media (max-width: 769px) {
+  nav.navbar.navbar-inverse .navbar-toggle{
+    display: none;
+  }
+  .attr-nav>ul>li>a {
+    padding: 13px !important;
+  }
+  nav.navbar.bootsnav .navbar-brand{
+    float: left !important;
+  }
+  nav.navbar.bootsnav .navbar-header {
+    padding: 0 !important;
+  }
+  nav.navbar.bootsnav .navbar-brand {
+    padding: 3px 7px !important;
+  }
+}
 @media (min-width: 480px) and (max-width: 640px) {
     nav.bootsnav.navbar-full ul.nav {
         padding-top: 30px;

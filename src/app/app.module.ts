@@ -15,14 +15,13 @@ import { ToTwelveHourPipe } from './pipes/to-twelve-hour.pipe';
 import { PrayersComponent } from './content/pages/prayers/prayers.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ArticlesComponent } from './content/pages/articles/articles.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ArticleDetailsComponent } from './content/pages/articles/article-details/article-details.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ReactiveFormsModule } from '@angular/forms';
 import { WeatherComponent } from './content/pages/weather/weather.component';
 import { LoaderComponent } from './content/shared/loader/loader.component';
 import { ContactUsComponent } from './content/pages/contact-us/contact-us.component';
-
 
 
 @NgModule({
@@ -50,6 +49,7 @@ import { ContactUsComponent } from './content/pages/contact-us/contact-us.compon
     NgbModule,
     NgxPaginationModule,
     ReactiveFormsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

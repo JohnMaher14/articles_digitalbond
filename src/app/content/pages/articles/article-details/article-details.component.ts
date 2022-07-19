@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ArticlesService } from 'src/app/services/articles.service';
 import { environment } from 'src/environments/environment';
@@ -14,6 +15,7 @@ export class ArticleDetailsComponent implements OnInit {
   loading:boolean = false;
   article:any;
   comments: any[] =[];
+  success: boolean = false;
   anotherPosts: any[] =[];
   articlesViews: any[] =[];
   indexForNumbers: any;
@@ -23,6 +25,7 @@ export class ArticleDetailsComponent implements OnInit {
   constructor(
     private _ArticlesService:ArticlesService,
     private _ActivatedRoute:ActivatedRoute,
+    private _NgbModal:NgbModal ,
     private _Router:Router
   ) { }
 
@@ -31,7 +34,7 @@ export class ArticleDetailsComponent implements OnInit {
     this.showArticlesViews();
   }
   commentForm:FormGroup = new FormGroup({
-    'title' : new FormControl('', Validators.required),
+    'title' : new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]),
     'text' : new FormControl('', Validators.required),
     'comment_status' : new FormControl('0', Validators.required),
   })
@@ -64,16 +67,21 @@ export class ArticleDetailsComponent implements OnInit {
     this._ArticlesService.getArticles().subscribe(
       (response) => {
         // this.articles = response.row
-        const newArray =  response.row.sort(
-          (views:any , view_counter:any)=> {
-            return view_counter.view_counter - views.view_counter;
+        this._ActivatedRoute.paramMap.subscribe(
+          (params: Params)=> {
+            const newArray =  response.row.sort(
+              (views:any , view_counter:any)=> {
+                return view_counter.view_counter - views.view_counter;
+              }
+            ).filter((x:any) => {
+              return x.post_status != 0 && x.id != params['params'].id;
+            })
+
+            console.log(newArray);
+            this.articlesViews = newArray;
+            this.loading  = false;
           }
-        ).filter((x:any) => {
-          return x.post_status != 0;
-        })
-        console.log(newArray);
-        this.articlesViews = newArray;
-        this.loading  = false;
+        )
 
       }
 
@@ -92,6 +100,12 @@ export class ArticleDetailsComponent implements OnInit {
       (response) => {
         console.log(response);
         this.getDetails();
+        this.success = true
+        setTimeout(() => {
+          this.success = false
+
+        }, 2000);
+        // this._NgbModal.open(response,  { centered: true });
         this.loading = false;
 
       }

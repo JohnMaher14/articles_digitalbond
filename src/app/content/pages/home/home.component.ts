@@ -57,6 +57,7 @@ export class HomeComponent implements OnInit {
         ).filter((x:any) => {
           return x.post_status != 0;
         })
+        console.log(newArray);
         this.articlesViews = newArray;
         this.loading  = false;
 
@@ -100,7 +101,8 @@ export class HomeComponent implements OnInit {
   //   )
   // }
   newsSlider: OwlOptions = {
-    autoplay: false,
+    autoplay: true,
+    autoplayTimeout:5000,
     dots: false,
     rtl: true,
     loop: true,

@@ -80,58 +80,36 @@
   <div class="row d-flex align-items-center">
       <div class="col-md-7">
           <div class="accordion-widget">
-              <h3 class="code-title">Accordion</h3>
-              <ul class="accordion">
-                  <li>
-                      <a>{{aboutUs?.according_first_title}}</a>
-                      <p>
-                        {{aboutUs?.according_first_text}}
-                      </p>
-                  </li>
-                  <li>
-                      <a>{{aboutUs?.according_second_title}}</a>
-                      <p>
-                        {{aboutUs?.according_second_text}}
+              <h3 class="code-title">احنا عارفين انت عاوز ايه</h3>
+              <ngb-accordion [closeOthers]="true" activeIds="static-1">
 
-                      </p>
-                  </li>
-                  <li>
-                      <a>{{aboutUs?.according_third_title}}</a>
-                      <p>
-                        {{aboutUs?.according_third_text}}
-
-                      </p>
-                  </li>
-                  <li>
-                      <a>{{aboutUs?.according_fourth_title}}</a>
-                      <p>
-                        {{aboutUs?.according_fourth_text}}
-
-                      </p>
-                  </li>
-                  <li>
-                      <a>{{aboutUs?.according_fivth_title}}</a>
-                      <p>
-                        {{aboutUs?.according_fivth_text}}
-
-                      </p>
-                  </li>
-              </ul>
-              <!-- <ngb-accordion #acc="ngbAccordion" activeIds="config-panel-one" class="accordion">
-                <ngb-panel title="{{aboutUs?.according_first_title}}" id="config-panel-one" >
+                <ngb-panel id="static-1">
+                  <ng-template ngbPanelTitle>
+                    <span>{{aboutUs?.according_first_title}}</span>
+                  </ng-template>
                   <ng-template ngbPanelContent>
                     {{aboutUs?.according_first_text}}
-
                   </ng-template>
                 </ngb-panel>
-                <ngb-panel title="{{aboutUs?.according_second_title}}">
+                <ngb-panel id="static-2">
+                  <ng-template ngbPanelTitle>
+                    <span>{{aboutUs?.according_second_title}}</span>
+                  </ng-template>
                   <ng-template ngbPanelContent>
                     {{aboutUs?.according_second_text}}
-
                   </ng-template>
                 </ngb-panel>
-              </ngb-accordion> -->
-              <!-- /.accordion -->
+                <ngb-panel id="static-3">
+                  <ng-template ngbPanelTitle>
+                    <span>{{aboutUs?.according_third_title}}</span>
+                  </ng-template>
+                  <ng-template ngbPanelContent>
+                    {{aboutUs?.according_third_text}}
+                  </ng-template>
+                </ngb-panel>
+              </ngb-accordion>
+
+              <!-- /.accordion-->
           </div>
           <!-- /.End of according widget -->
       </div>

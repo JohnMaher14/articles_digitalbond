@@ -33,7 +33,8 @@ export class NavbarComponent implements OnInit {
   showWeather(){
     this._WeatherService.getCountry().subscribe(
       (data) => {
-        this.weatherContainer = data.main;
+        console.log(data);
+        this.weatherContainer = data.current;
 
       }
     )

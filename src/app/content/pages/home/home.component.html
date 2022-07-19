@@ -39,7 +39,7 @@
                   {{article.title}}
                 </a></h2>
               <div class="mas-details">
-                <div class="text-white" [innerHtml]="article.text">
+                <div class="text-white div-overflow" [innerHtml]="article.text">
 
                 </div>
               </div>
@@ -65,7 +65,7 @@
                         {{article.title}}
                       </a></h4>
                     <div class="mas-details">
-                      <div  class="text-white" [innerHtml]="article.text">
+                      <div  class="text-white div-overflow" [innerHtml]="article.text">
 
                       </div>
                       <!-- <ng-container></ng-container> -->
@@ -127,8 +127,8 @@
     </div>
     <main class="col-xs-12 col-sm-8 col-md-7 content p_r_40">
       <article class="grid_post grid_post_lg text-center">
-        <figure *ngFor="let article of articlesViews|slice:-1">
-          <a class="grid_image"><img [src]="articleImage+article.main_image" class="img-responsive"
+        <figure *ngFor="let article of articlesViews|slice:0:1">
+          <a class="grid_image"><img [src]="articleImage+article.main_image" class="img-responsive w-100"
               alt=""></a>
           <figcaption>
             <!-- <div class="post-cat"><span>في</span> <a href="articles.html">اكلات شرقي</a></div> -->
@@ -227,7 +227,7 @@
 
 
           <!-- /.latest post -->
-          <div *ngFor="let article of articlesViews| slice:-5:-1" class="media latest_post">
+          <div *ngFor="let article of articlesViews| slice:1:5" class="media latest_post">
             <a class="media-left">
               <img [src]="articleImage+article.main_image" class="media-object" alt="">
             </a>

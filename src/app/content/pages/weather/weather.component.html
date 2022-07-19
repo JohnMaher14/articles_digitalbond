@@ -289,29 +289,28 @@
 
               </div>
               <div class="location d-flex align-items-center justify-content-center">
-                <p>مصر</p>
+                <p>{{weatherContainerDetails?.name}}</p>
                 <p>-</p>
-                <p>القاهرة</p>
+                <p>{{weatherContainerDetails?.country}}</p>
               </div>
               <div class="date d-flex align-items-center justify-content-center">
-                <p>الإثنين 06 يونيو 2022
+                <p>{{weatherContainerDetails?.localtime | date:'short'}}
                 </p>
               </div>
               <div class="row text-white w-main d-flex justify-content-center">
                 <div class="text-center">
                   <i class="fa fa-cloud fa-2x" style="color: #F29F26;"></i>
                   <div class="d-flex align-items-center">
-                    <span id="temperature">{{weatherContainer.temp}}°</span>
+                    <span id="temperature">{{weatherContainer?.feelslike_c}}°</span>
                     <span style="    font-size: 2em;
-                                          margin-right: 15px;"
-                      class="">{{weatherContainer.temp_min}}°</span>
+                                          margin-right: 15px;" class="">{{weatherContainer?.temp_c}}°</span>
 
                   </div>
                 </div>
 
               </div>
             </div>
-            <div class=" card-section">
+            <!-- <div class=" card-section">
               <div class="row d-flex justify-content-center">
                 <div class="col-sm-11 col-md-10">
                   <div class="days-box row text-center bg-white" style="visibility: visible;">
@@ -342,7 +341,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
           </section>
           <!-- /.End of post details -->
         </main>
@@ -355,24 +354,24 @@
           </div>
           <!--  /.End of title -->
           <div class="posts">
-          <!-- /.latest post -->
-          <div *ngFor="let article of articlesViews| slice:-6:-1" class="media latest_post">
-            <a class="media-left">
-              <img [src]="articleImage+article.main_image" class="media-object" alt="">
-            </a>
-            <div class="media-body">
-              <h6 class="media-heading"><a [routerLink]="['/article-details',article.id]">
-                {{article.title}}
-              </a></h6>
-              <div class="entry-meta">
-                <span class="entry-date"><i class="fa fa-calendar" aria-hidden="true"></i><time
-                    datetime="2018-01-21T19:00">
-                    {{article.created_at}}
-                  </time></span>
+            <!-- /.latest post -->
+            <div *ngFor="let article of articlesViews| slice:-6:-1" class="media latest_post">
+              <a class="media-left">
+                <img [src]="articleImage+article.main_image" class="media-object" alt="">
+              </a>
+              <div class="media-body">
+                <h6 class="media-heading"><a [routerLink]="['/article-details',article.id]">
+                    {{article.title}}
+                  </a></h6>
+                <div class="entry-meta">
+                  <span class="entry-date"><i class="fa fa-calendar" aria-hidden="true"></i><time
+                      datetime="2018-01-21T19:00">
+                      {{article.created_at}}
+                    </time></span>
+                </div>
               </div>
             </div>
-          </div>
-          <!-- /.latest post -->
+            <!-- /.latest post -->
           </div>
         </div>
         <div class="banner-content">

@@ -15,8 +15,8 @@ export class ContactUsComponent implements OnInit {
     private _GeneralService:GeneralService
   ) { }
   contactUsForm: FormGroup =  new FormGroup ({
-    'name' : new FormControl('', Validators.required),
-    'phone' : new FormControl('', Validators.required),
+    'name' : new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]),
+    'phone' : new FormControl('', [Validators.required , Validators.pattern(/^01[0125][0-9]{8}$/)]),
     'email' : new FormControl('', [Validators.required , Validators.email]),
     'message' : new FormControl('', Validators.required),
   })

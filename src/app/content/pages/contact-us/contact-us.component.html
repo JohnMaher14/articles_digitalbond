@@ -81,7 +81,8 @@
                               </div>
                             </div>
                             <div *ngIf="contactUsForm.controls['name'].touched && contactUsForm.controls['name'].errors != null" class="alert alert-danger"  role="alert">
-                              <strong>الاسم مطلوبة</strong>
+                              <strong *ngIf="contactUsForm.controls['name'].errors['required']">الاسم مطلوبة</strong>
+                              <strong *ngIf="contactUsForm.controls['name'].errors['pattern']">الاسم يحتوي علي ارقام او حروف</strong>
                             </div>
                           <div class="form-group row">
                               <label for="email" class="col-sm-3 col-md-2 col-form-label">الأيميل *</label>
@@ -100,7 +101,8 @@
                               </div>
                             </div>
                             <div *ngIf="contactUsForm.controls['phone'].touched && contactUsForm.controls['phone'].errors != null" class="alert alert-danger"  role="alert">
-                              <strong>رقم التليفون مطلوبة</strong>
+                              <strong *ngIf="contactUsForm.controls['phone'].errors['required']">رقم التليفون مطلوبة</strong>
+                              <strong *ngIf="contactUsForm.controls['phone'].errors['pattern']">رقم التليفون لازم يكون مصري</strong>
                             </div>
 
                           <button type="submit" [disabled]="contactUsForm.invalid" class="btn link-btn" >يلا بينا </button>
